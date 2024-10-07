@@ -1,0 +1,12 @@
+E:\TODO\ESTUDIOS\SolucionBlazor\BlazorCrud.Shared\bin\Debug\net7.0\BlazorCrud.Shared.deps.json
+E:\TODO\ESTUDIOS\SolucionBlazor\BlazorCrud.Shared\bin\Debug\net7.0\BlazorCrud.Shared.dll
+E:\TODO\ESTUDIOS\SolucionBlazor\BlazorCrud.Shared\bin\Debug\net7.0\BlazorCrud.Shared.pdb
+E:\TODO\ESTUDIOS\SolucionBlazor\BlazorCrud.Shared\obj\Debug\net7.0\BlazorCrud.Shared.csproj.AssemblyReference.cache
+E:\TODO\ESTUDIOS\SolucionBlazor\BlazorCrud.Shared\obj\Debug\net7.0\BlazorCrud.Shared.GeneratedMSBuildEditorConfig.editorconfig
+E:\TODO\ESTUDIOS\SolucionBlazor\BlazorCrud.Shared\obj\Debug\net7.0\BlazorCrud.Shared.AssemblyInfoInputs.cache
+E:\TODO\ESTUDIOS\SolucionBlazor\BlazorCrud.Shared\obj\Debug\net7.0\BlazorCrud.Shared.AssemblyInfo.cs
+E:\TODO\ESTUDIOS\SolucionBlazor\BlazorCrud.Shared\obj\Debug\net7.0\BlazorCrud.Shared.csproj.CoreCompileInputs.cache
+E:\TODO\ESTUDIOS\SolucionBlazor\BlazorCrud.Shared\obj\Debug\net7.0\BlazorCrud.Shared.dll
+E:\TODO\ESTUDIOS\SolucionBlazor\BlazorCrud.Shared\obj\Debug\net7.0\refint\BlazorCrud.Shared.dll
+E:\TODO\ESTUDIOS\SolucionBlazor\BlazorCrud.Shared\obj\Debug\net7.0\BlazorCrud.Shared.pdb
+E:\TODO\ESTUDIOS\SolucionBlazor\BlazorCrud.Shared\obj\Debug\net7.0\ref\BlazorCrud.Shared.dll

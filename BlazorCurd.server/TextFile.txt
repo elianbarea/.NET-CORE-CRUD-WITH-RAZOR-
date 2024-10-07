@@ -1,0 +1,4 @@
+﻿ COMANDO DE ENTITYFRAMEWORK : Scaffold-DbContext para obtener las referencias de la base de datos (Genera código para un DbContext y tipos de entidad para una base de datos. Para que Scaffold-DbContext genere un tipo de entidad, la tabla de la base de datos debe tener una clave principal.)
+ ejemplo 
+Scaffold-DbContext "Scaffold-DbContext "Server=DESKTOP-CEKNLMQ\MSSQLSERVER01;Database=Blogging;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+

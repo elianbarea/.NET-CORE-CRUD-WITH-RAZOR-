@@ -1,0 +1,103 @@
+﻿@page "/empleado"
+@page "/empleado/{idEmpleadoEditar:int}"
+
+@*añadimos las referencias*@
+@using BlazorCrud.Shared;
+@*para acceder a el departamento y a los empleados*@
+@using BlazorCrud.Client.Services;
+
+
+@*agregamos una variable para poder trabajar con nuestros servicios*@
+@inject IEmpleadoService empleadoService;
+@inject IDepartamentoService departamentoService;
+@inject NavigationManager navegacion;
+
+<h3>@titulo</h3>
+
+<EditForm Model="empleado" OnValidSubmit="OnValidSumbit">@*"OnValidSubmit valida los parametros [Required]"*@
+    <DataAnnotationsValidator></DataAnnotationsValidator> @*sin esta etiqueta las validaciones no funcionan*@
+
+    <div class="mb-3">
+        <label class="form-check">Nombre Completo</label>
+        <InputText class="form-control" @bind-Value="empleado.NombreCompleto"></InputText>
+        <ValidationMessage For="@(()=> empleado.NombreCompleto)"></ValidationMessage>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-check">Departamento</label>
+        <InputSelect class="form-select" @bind-Value="empleado.IdDepartamento">
+        <option value="0">-- Seleccionar --</option>
+        @foreach(var item in listaDepartamento)
+        {
+            <option value="@item.IdDepartamento">@item.Nombre</option>
+        }
+        </InputSelect>
+        <ValidationMessage For="@(()=> empleado.IdDepartamento)"></ValidationMessage>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-check">Sueldo</label>
+        <InputNumber class="form-control" @bind-Value="empleado.Sueldo"></InputNumber>
+        <ValidationMessage For="@(()=> empleado.Sueldo)"></ValidationMessage>
+    </div>
+    <div class="mb-3">
+        <label class="form-check">Fecha Contrato</label>
+        <InputDate class="form-control" @bind-Value="empleado.FechaContrato"></InputDate>
+        <ValidationMessage For="@(()=> empleado.FechaContrato)"></ValidationMessage>
+    </div>
+
+    <button class="btn btn-primary" type="submit">
+        @*dispara el evento OnValidSubmit*@
+        @btnTexto
+    </button>
+
+    <a class="btn btn-warning" href="empleados">Volver</a>
+
+</EditForm>
+
+@code {
+    [Parameter]
+    public int idEmpleadoEditar { get; set; } = 0;
+
+
+    string titulo = string.Empty;
+    string btnTexto = string.Empty;
+
+    EmpleadoDTO empleado = new EmpleadoDTO();
+    List<DepartamentoDTO> listaDepartamento = new List<DepartamentoDTO>();
+
+    //creamos el metodo con el que iniciara el componente Empleado
+    protected override async Task OnInitializedAsync()
+    {
+        if(idEmpleadoEditar != 0)// EN CASO DE EDITAR
+        {
+            empleado = await empleadoService.Buscar(idEmpleadoEditar);
+            btnTexto = "Actualizar Empleado";
+            titulo = "Editar Empleado";
+        }
+        else// CASO DE CREAR
+        {
+            empleado.FechaContrato = DateTime.Today;
+            btnTexto = "Guardar Empleado";
+            titulo = "Nuevo Empleado";
+        }
+
+        listaDepartamento = await departamentoService.Lista();
+    }
+
+    private async Task OnValidSumbit()//VALIDA antes de GUARDAR O EDITAR EMPLEADO
+    {
+        int idDevuelto = 0;
+        if (idEmpleadoEditar == 0) idDevuelto = await empleadoService.Guardar(empleado);
+        else
+            idDevuelto = await empleadoService.Editar(empleado);
+
+        if(idDevuelto != 0)
+        {
+            navegacion.NavigateTo("/empleados");
+        }
+
+    } 
+
+
+}
